@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-native";
 
 import { StyleSheet, View } from "react-native";
-import { RepositoryList } from "./RepositoryList";
-import Signin from "./Signin";
+import RepositoryList from "./RepositoryList";
+import SignIn from "./SignIn";
 import AppBar from "./AppBar";
 
 const styles = StyleSheet.create({
@@ -22,7 +22,7 @@ const Main = () => {
           <RepositoryList />
         </Route>
         <Route path="/signin">
-          <Signin />
+          <SignIn />
         </Route>
         <Redirect to="/" />
       </Switch>
