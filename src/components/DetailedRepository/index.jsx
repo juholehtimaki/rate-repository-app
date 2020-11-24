@@ -10,7 +10,12 @@ import Review from "./Review";
 const DetailedRepository = () => {
   const { id } = useParams();
   const { repository, loading } = useRepository(id);
-  const { reviews } = useReviews(id);
+  const { reviews, fetchMore } = useReviews({ id: id, first: 10 });
+
+  const onEndReach = () => {
+    fetchMore();
+  };
+
   if (loading) return null;
   return (
     <>
@@ -20,6 +25,8 @@ const DetailedRepository = () => {
         data={reviews}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={({ item }) => <Review item={item} details={false} />}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
       />
     </>
   );

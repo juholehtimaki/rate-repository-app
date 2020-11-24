@@ -15,6 +15,7 @@ export const RepositoryListContainer = ({
   handleQueryChange,
   filter,
   setFilter,
+  onEndReach,
 }) => {
   return (
     <View>
@@ -46,6 +47,8 @@ export const RepositoryListContainer = ({
             />
           </>
         }
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
         data={repositories}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={({ item }) => (
@@ -87,10 +90,15 @@ const RepositoryList = () => {
   };
 
   const currQueryString = `${query.orderBy}_${query.orderDirection}`;
-  const { repositories } = useRepositories({
+  const { repositories, fetchMore } = useRepositories({
+    first: 10,
     ...query,
     searchKeyword,
   });
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   return (
     <RepositoryListContainer
@@ -100,6 +108,7 @@ const RepositoryList = () => {
       handleQueryChange={handleQueryChange}
       filter={filter}
       setFilter={setFilter}
+      onEndReach={onEndReach}
     />
   );
 };
