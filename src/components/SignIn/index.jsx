@@ -7,12 +7,8 @@ const SignIn = () => {
   const [signIn] = useSignin();
 
   const onSubmit = async (values) => {
-    const { username, password } = values;
-
     try {
-      console.log("attempting to log in");
-      const { data } = await signIn({ username, password });
-      console.log(data);
+      await signIn(values);
     } catch (e) {
       console.log(e);
     }

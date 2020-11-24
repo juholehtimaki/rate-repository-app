@@ -54,11 +54,18 @@ const AppBar = () => {
             </View>
           </>
         ) : (
-          <View style={styles.tabContainer}>
-            <Link to="/signin" component={AppBarTab}>
-              Sign in
-            </Link>
-          </View>
+          <>
+            <View style={styles.tabContainer}>
+              <Link to="/signin" component={AppBarTab}>
+                Sign in
+              </Link>
+            </View>
+            <View style={styles.tabContainer}>
+              <Link to="/signup" component={AppBarTab}>
+                Sign up
+              </Link>
+            </View>
+          </>
         )}
       </ScrollView>
     </View>
