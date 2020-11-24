@@ -3,9 +3,16 @@ import { View, TouchableWithoutFeedback, Text, StyleSheet } from "react-native";
 import { theme } from "../../theme";
 
 const styles = StyleSheet.create({
-  button: {
+  primaryButton: {
     padding: 12,
     backgroundColor: theme.colors.buttonColor,
+    borderRadius: 5,
+    marginLeft: 5,
+    marginRight: 5,
+  },
+  secondaryButton: {
+    padding: 12,
+    backgroundColor: theme.colors.errorColor,
     borderRadius: 5,
     marginLeft: 5,
     marginRight: 5,
@@ -16,10 +23,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({ text, onPress }) => {
+const Button = ({ text, onPress, primary = true }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.button}>
+      <View style={primary ? styles.primaryButton : styles.secondaryButton}>
         <Text style={styles.txt} testID="button">
           {text}
         </Text>

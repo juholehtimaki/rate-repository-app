@@ -45,6 +45,11 @@ const AppBar = () => {
         {data && data.authorizedUser ? (
           <>
             <View style={styles.tabContainer}>
+              <Link to="/my-reviews" component={AppBarTab}>
+                My reviews
+              </Link>
+            </View>
+            <View style={styles.tabContainer}>
               <Link to="/review" component={AppBarTab}>
                 Creata a review
               </Link>
