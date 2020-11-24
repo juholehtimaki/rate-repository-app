@@ -43,9 +43,16 @@ const AppBar = () => {
           </Link>
         </View>
         {data && data.authorizedUser ? (
-          <View style={styles.tabContainer}>
-            <AppBarTab onPress={onSignout}>Sign out</AppBarTab>
-          </View>
+          <>
+            <View style={styles.tabContainer}>
+              <Link to="/review" component={AppBarTab}>
+                Creata a review
+              </Link>
+            </View>
+            <View style={styles.tabContainer}>
+              <AppBarTab onPress={onSignout}>Sign out</AppBarTab>
+            </View>
+          </>
         ) : (
           <View style={styles.tabContainer}>
             <Link to="/signin" component={AppBarTab}>

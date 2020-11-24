@@ -1,8 +1,11 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
+import { openURL } from "expo-linking";
+
 import { theme } from "../../theme";
 import Text from "../utils/Text";
+import Button from "../utils/Button";
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -40,6 +43,17 @@ const styles = StyleSheet.create({
   languageText: {
     color: "white",
   },
+  button: {
+    padding: 12,
+    backgroundColor: theme.colors.buttonColor,
+    borderRadius: 5,
+    marginLeft: 5,
+    marginRight: 5,
+  },
+  txt: {
+    textAlign: "center",
+    color: theme.colors.textHeader,
+  },
 });
 
 export const numberFormatter = (num) =>
@@ -47,7 +61,11 @@ export const numberFormatter = (num) =>
     ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
     : Math.sign(num) * Math.abs(num);
 
-export const RepositoryItem = ({ item }) => {
+export const RepositoryItem = ({ item, details }) => {
+  const handleGitHub = () => {
+    openURL(item.url);
+  };
+
   return (
     <View style={styles.flexContainer}>
       <View style={styles.flexRowContainer}>
@@ -97,6 +115,7 @@ export const RepositoryItem = ({ item }) => {
           <Text color="textSecondary">Rating</Text>
         </View>
       </View>
+      {details && <Button text="Open in GitHub" onPress={handleGitHub} />}
     </View>
   );
 };

@@ -5,6 +5,8 @@ import { StyleSheet, View } from "react-native";
 import RepositoryList from "./RepositoryList";
 import SignIn from "./SignIn";
 import AppBar from "./AppBar";
+import DetailedRepository from "./DetailedRepository";
+import CreateReview from "./CreateReview";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +25,12 @@ const Main = () => {
         </Route>
         <Route path="/signin">
           <SignIn />
+        </Route>
+        <Route path="/repository/:id">
+          <DetailedRepository />
+        </Route>
+        <Route path="/review">
+          <CreateReview />
         </Route>
         <Redirect to="/" />
       </Switch>

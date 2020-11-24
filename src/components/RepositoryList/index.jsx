@@ -1,17 +1,10 @@
 import React from "react";
-import { FlatList, View, StyleSheet } from "react-native";
+import { FlatList, View, TouchableOpacity } from "react-native";
+import { Link } from "react-router-native";
 
 import { RepositoryItem } from "./RepositoryItem";
+import ItemSeparator from "../utils/ItemSeparator";
 import useRepositories from "../../hooks/useRepositories";
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-    backgroundColor: "grey",
-  },
-});
-
-const ItemSeparator = () => <View style={styles.separator} />;
 
 export const RepositoryListContainer = ({ repositories }) => {
   return (
@@ -19,7 +12,11 @@ export const RepositoryListContainer = ({ repositories }) => {
       <FlatList
         data={repositories}
         ItemSeparatorComponent={ItemSeparator}
-        renderItem={({ item }) => <RepositoryItem item={item} />}
+        renderItem={({ item }) => (
+          <Link to={`/repository/${item.id}`} component={TouchableOpacity}>
+            <RepositoryItem item={item} details={false} />
+          </Link>
+        )}
       />
     </View>
   );

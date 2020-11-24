@@ -10,7 +10,7 @@ describe("SignIn", () => {
 
       fireEvent.changeText(getByTestId("username"), "kalle");
       fireEvent.changeText(getByTestId("password"), "password");
-      fireEvent.press(getByTestId("signin"));
+      fireEvent.press(getByTestId("button"));
 
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledTimes(1);
