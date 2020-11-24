@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const numberFormatter = (num) =>
+export const numberFormatter = (num) =>
   Math.abs(num) > 999
     ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
     : Math.sign(num) * Math.abs(num);
@@ -53,32 +53,47 @@ export const RepositoryItem = ({ item }) => {
       <View style={styles.flexRowContainer}>
         <Image style={styles.image} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.flexColumnContainer}>
-          <Text color="textPrimary" fontSize="subheading" fontWeight="bold">
+          <Text
+            color="textPrimary"
+            fontSize="subheading"
+            fontWeight="bold"
+            testID="fullName"
+          >
             {item.fullName}
           </Text>
-          <Text color="textSecondary">{item.description}</Text>
+          <Text color="textSecondary" testID="description">
+            {item.description}
+          </Text>
           <View style={styles.languageContainer}>
-            <Text style={styles.languageText}>{item.language}</Text>
+            <Text style={styles.languageText} testID="language">
+              {item.language}
+            </Text>
           </View>
         </View>
       </View>
       <View style={styles.flexRowContainer}>
         <View style={styles.subflexColumnConter}>
-          <Text color="textPrimary">
+          <Text color="textPrimary" testID="stargazersCount">
             {numberFormatter(item.stargazersCount)}
           </Text>
           <Text color="textSecondary">Stars</Text>
         </View>
         <View style={styles.subflexColumnConter}>
-          <Text color="textPrimary">{numberFormatter(item.forksCount)}</Text>
+          <Text color="textPrimary" testID="forksCount">
+            {numberFormatter(item.forksCount)}
+          </Text>
           <Text color="textSecondary">Forks</Text>
         </View>
         <View style={styles.subflexColumnConter}>
-          <Text color="textPrimary">{numberFormatter(item.reviewCount)}</Text>
+          <Text color="textPrimary" testID="reviewCount">
+            {numberFormatter(item.reviewCount)}
+          </Text>
           <Text color="textSecondary">Reviews</Text>
         </View>
         <View style={styles.subflexColumnConter}>
-          <Text color="textPrimary">{numberFormatter(item.ratingAverage)}</Text>
+          <Text color="textPrimary" testID="ratingAverage">
+            {numberFormatter(item.ratingAverage)}
+          </Text>
           <Text color="textSecondary">Rating</Text>
         </View>
       </View>
